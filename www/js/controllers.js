@@ -1,5 +1,16 @@
 angular.module('starter.controllers', [])
 
+// ToDo Controller
+.controller('ToDoListCtrl', function ($scope){
+  $scope.toDoListItems = [{
+    task: 'Scuba Diving',
+    status: 'Not Done'
+  }, {
+    task: 'Climb Everest',
+    status: 'Not Done'
+  }]
+});
+
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
