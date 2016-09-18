@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
     task: 'Climb Everest',
     status: 'Not Done'
   }]
-});
+})
 
 .controller('DashCtrl', function($scope) {})
 
