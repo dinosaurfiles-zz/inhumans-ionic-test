@@ -39,13 +39,16 @@
     <h1 class="title">My ToDo List</h1>
 
     <div class="buttons">
-      <button class="button" ng-click="modal.show()">Add</button>
+      <button class="button button-positve" ng-click="modal.show()">Add</button>
+      <button class="button button-assertive" ng-click="showDeleteButton = !showDeleteButton">Delete</button>
     </div>
   </ion-header-bar>
   <ion-content>
-    <ion-list>
+    <ion-list show-delete="showDeleteButton">
       <ion-item ng-repeat="item in toDoListItems">
         {{ item.task }}
+        <ion-delete-button class="ion-minus-circled" ng-click="toDoListItems.splice($index, 1)">
+        </ion-delete-button>  
       </ion-item>
     </ion-list>
   </ion-content>
@@ -53,7 +56,7 @@
   <script id="modal.html" type="text/ng-template">
     <ion-modal-view>
       <ion-header-bar align-title='left' class='bar-positive'>
-        <button class="button" ng-click="closeModal()">back</button>
+        <button class="button icon-left ion-chevron-left button-positive" ng-click="closeModal()">Back</button>
         <h1 class="title">Add Item</h1>
       </ion-header-bar>
       <ion-content>

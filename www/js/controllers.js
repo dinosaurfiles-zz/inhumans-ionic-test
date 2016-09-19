@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 // ToDo Controller
 .controller('ToDoListCtrl', function ($scope, $ionicModal){
   $scope.toDoListItems = [];
-
+  $scope.showDeleteButton = false;
   // Init Modal
   $ionicModal.fromTemplateUrl('modal.html', {
     scope: $scope,
@@ -28,7 +28,9 @@ angular.module('starter.controllers', [])
   });
 
   $scope.AddItem = function (data) {
+    var length = $scope.toDoListItems.length + 1;
     $scope.toDoListItems.push({
+      id: length,
       task: data.newItem,
       status: 'not done'
     });
@@ -36,6 +38,15 @@ angular.module('starter.controllers', [])
     $scope.closeModal();
   };
 
+  $scope.DeleteItem = function (data) {
+    $scope.toDoListItems.push({
+      id: length,
+      task: data.newItem,
+      status: 'not done'
+    });
+    data.newItem = '';
+    $scope.closeModal();
+  };
   // $scope.toDoListItems = [{
   //   task: 'Scuba Diving',
   //   status: 'Not Done'
