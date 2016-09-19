@@ -1,5 +1,50 @@
 angular.module('starter.controllers', [])
 
+// ToDo Controller
+.controller('ToDoListCtrl', function ($scope, $ionicModal){
+  $scope.toDoListItems = [];
+
+  // Init Modal
+  $ionicModal.fromTemplateUrl('modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal){
+    $scope.modal = modal;
+  });
+
+  // Open Modal
+  $scope.openModal = function (){
+    $scope.modal.show();
+  };
+
+  // Close Modal
+  $scope.closeModal = function (){
+    $scope.modal.hide();
+  };
+
+  // Clean Modal
+  $scope.$on('$destroy', function(){
+    $scope.modal.remove();
+  });
+
+  $scope.AddItem = function (data) {
+    $scope.toDoListItems.push({
+      task: data.newItem,
+      status: 'not done'
+    });
+    data.newItem = '';
+    $scope.closeModal();
+  };
+
+  // $scope.toDoListItems = [{
+  //   task: 'Scuba Diving',
+  //   status: 'Not Done'
+  // }, {
+  //   task: 'Climb Everest',
+  //   status: 'Not Done'
+  // }]
+})
+
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
