@@ -19,7 +19,7 @@ angular.module('starter.controllers', [])
 
   // Close Modal
   $scope.closeModal = function (){
-    $scope.modal.close();
+    $scope.modal.hide();
   };
 
   // Clean Modal
